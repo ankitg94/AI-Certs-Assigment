@@ -3,6 +3,10 @@ import cors from "cors"
 import dotenv from "dotenv"
 import { dbConnect } from "./config/db.js"
 import dataRoute from "./routes/dataRoute.js"
+//step-1(host)
+import path from 'path'
+import { fileURLToPath } from "url";
+//database connection
 
 dbConnect()
 //dotenv config
