@@ -15,6 +15,11 @@ dotenv.config()
 //mongodb connection 
 
 dbConnect()
+//02-hosting k liye(start)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
+// hositng (end)
+
 //rest object 
 const app =express()
 
@@ -24,9 +29,18 @@ app.use(express.json())
 
 
 //routes
+
+//03-hoisting(start)
+app.use(express.static(path.join(__dirname, './client/build')))
+// hositng (end)
 //app.get('/',(req,res)=>{})
 app.use("/api/v1/data",dataRoute)
 
+//04-hoisting(start)
+app.use("*",function(req,res){
+       res.sendFile(path.join(__dirname,"./client/build/index.html"));
+});
+// hositng (end)
 
 
 //port
